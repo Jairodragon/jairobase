@@ -1,0 +1,33 @@
+CREATE TABLE Estudiantes (
+    id_estudiante SERIAL PRIMARY KEY,
+    nombre_completo VARCHAR(100),
+    apellido VARCHAR(100), -- Nuevo campo
+    fecha_nacimiento DATE,
+    carrera VARCHAR(100)
+);
+
+CREATE TABLE Materias (
+    id_materia SERIAL PRIMARY KEY,
+    nombre_materia VARCHAR(100),
+    creditos INT
+);
+
+CREATE TABLE Inscritos (
+    id_estudiante INT,
+    id_materia INT,
+    FOREIGN KEY (id_estudiante) REFERENCES Estudiantes(id_estudiante),
+    FOREIGN KEY (id_materia) REFERENCES Materias(id_materia),
+    PRIMARY KEY (id_estudiante, id_materia)
+);
+
+
+CREATE TABLE Notas (
+    id_nota SERIAL PRIMARY KEY,
+    id_estudiante INT,
+    id_materia INT,
+    nota FLOAT,
+    FOREIGN KEY (id_estudiante) REFERENCES Estudiantes(id_estudiante),
+    FOREIGN KEY (id_materia) REFERENCES Materias(id_materia)
+);
+
+select * from estudiantes e  ;
